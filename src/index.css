@@ -1,0 +1,98 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-primary: #0d9488;
+  --color-primary-hover: #0b7f74;
+}
+
+@layer base {
+  body {
+    @apply m-0 min-h-screen font-sans antialiased;
+  }
+
+  #root {
+    @apply min-h-screen;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    display: inline-flex;
+    height: 46px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.5rem;
+    border: none;
+    padding: 0 1rem;
+    font-size: 15px;
+    font-weight: 600;
+    color: #fff;
+    background-color: var(--color-primary);
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    cursor: pointer;
+    transition: background-color 150ms ease;
+  }
+
+  .btn-primary:hover:not(:disabled) {
+    background-color: var(--color-primary-hover);
+  }
+
+  .btn-primary:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+
+  .btn-primary:disabled {
+    cursor: not-allowed;
+    opacity: 0.65;
+  }
+
+  .btn-ghost {
+    display: inline-flex;
+    height: auto;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background: transparent;
+    padding: 0.25rem 0;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--color-primary);
+    cursor: pointer;
+    transition: color 150ms ease;
+  }
+
+  .btn-ghost:hover:not(:disabled) {
+    color: var(--color-primary-hover);
+  }
+}
+
+@layer utilities {
+  .bg-brand {
+    background-color: var(--color-primary);
+  }
+
+  .text-brand {
+    color: var(--color-primary);
+  }
+
+  .hover\:text-brand-hover:hover {
+    color: var(--color-primary-hover);
+  }
+
+  .hover\:bg-brand-hover:hover {
+    background-color: var(--color-primary-hover);
+  }
+
+  .focus\:border-brand:focus {
+    border-color: var(--color-primary);
+  }
+
+  .focus\:ring-brand:focus {
+    --tw-ring-color: var(--color-primary);
+  }
+}

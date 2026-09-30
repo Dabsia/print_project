@@ -7,6 +7,11 @@ import DashboardPage from './pages/DashboardPage'
 import UploadDocumentPage from './pages/UploadDoc'
 import ConfigurePrintJobPage from './pages/ConfigurePrintJobPage'
 import PrinterTerminalsPage from './pages/PrinterTerminalsPage'
+import PrintHistoryPage from './pages/PrintHistoryPage'
+import PrintJobDetailsPage from './pages/PrintJobDetailsPage'
+import WalletPage from './pages/WalletPage'
+import ProfilePage from './pages/ProfilePage'
+import ChangePasswordPage from './pages/ChangePasswordPage'
 
 export default function App() {
   return (
@@ -17,6 +22,11 @@ export default function App() {
         <Route path="/upload-doc" element={<UploadDocumentPage />} />
         <Route path="/configure-print" element={<ConfigurePrintJobPage />} />
         <Route path="/printer-terminals" element={<PrinterTerminalsPage />} />
+        <Route path="/print-history" element={<PrintHistoryPage />} />
+        <Route path="/print-job-details" element={<PrintJobDetailsPage />} />
+        <Route path="/wallet" element={<WalletPage />} />
+        <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/change-password" element={<ChangePasswordPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/forgot-password" element={<ForgotPasswordPage />} />

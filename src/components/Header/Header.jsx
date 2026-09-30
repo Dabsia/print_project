@@ -17,11 +17,11 @@ export default function Header() {
         </Link>
 
         {/* Profile Section */}
-        <div className="w-10 h-10 rounded-full border-2 border-teal-100 flex items-center justify-center overflow-hidden">
+        <Link to="/profile" className="w-10 h-10 rounded-full border-2 border-teal-100 flex items-center justify-center overflow-hidden hover:border-teal-300 transition-colors">
              <div className="bg-teal-50 w-full h-full flex items-center justify-center">
-                <User className="w-5 h-5  cursor-pointer text-teal-600" />
+                <User className="w-5 h-5 text-teal-600" />
              </div>
-        </div>
+        </Link>
       </div>
     </header>
   )

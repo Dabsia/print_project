@@ -1,7 +1,7 @@
 import { ArrowRight, FileText, Image as ImageIcon } from 'lucide-react'
 import Button from '../components/Button'
 import Header from '../components/Header/header'
-import {useNavigate} from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 // 1. Define the documents data array outside the component
 const RECENT_DOCUMENTS = [
@@ -31,8 +31,6 @@ const RECENT_DOCUMENTS = [
   },
 ]
 
-
-
 export default function DashboardPage() {
   const navigate = useNavigate()
   return (
@@ -47,7 +45,10 @@ export default function DashboardPage() {
         </div>
 
         {/* Upload Document Card */}
-        <div onClick = {() => navigate('/upload-doc')} className="bg-white rounded-xl p-6 mb-8 flex items-center justify-between shadow-sm border border-gray-100 cursor-pointer hover:border-gray-300 transition-colors">
+        <div
+          onClick={() => navigate('/upload-doc')}
+          className="bg-white rounded-xl p-6 mb-8 flex items-center justify-between shadow-sm border border-gray-100 cursor-pointer hover:border-gray-300 transition-colors"
+        >
           <div className="flex items-center gap-4">
             <div className="w-12 h-12 bg-teal-50 rounded-lg flex items-center justify-center">
               <ArrowRight className="w-6 h-6 text-teal-600 rotate-[-45deg]" />
@@ -57,31 +58,33 @@ export default function DashboardPage() {
               <p className="text-gray-500 text-sm">Upload and configure your print job</p>
             </div>
           </div>
-          <div className="w-8 h-8 rounded-full bg-teal-500 flex items-center justify-center">
+          <div className="w-8 h-8 rounded-full bg-teal-500 flex items-center justify-center flex-shrink-0">
             <ArrowRight className="w-4 h-4 text-white" />
           </div>
         </div>
 
         {/* Main Grid Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          
+
           {/* Left Column: Recent Documents */}
           <div className="lg:col-span-2">
             <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 h-full">
               <div className="flex items-center justify-between mb-6">
                 <h2 className="text-lg font-bold text-gray-900">Recent Documents</h2>
-                <a href="#" className="text-sm font-semibold text-teal-600 hover:text-teal-700">View All</a>
+                <Link to="/print-history" className="text-sm font-semibold text-teal-600 hover:text-teal-700">
+                  View All
+                </Link>
               </div>
 
               <div className="space-y-3">
                 {/* 2. Map over the documents array */}
                 {RECENT_DOCUMENTS.map((doc) => (
-                  <div 
-                    key={doc.id} 
-                    className="flex items-center justify-between p-4 bg-gray-50 rounded-lg border border-gray-100"
+                  <div
+                    key={doc.id}
+                    className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 p-4 bg-gray-50 rounded-lg border border-gray-100"
                   >
-                    <div className="flex items-center gap-4">
-                      <div className="w-10 h-10 bg-white rounded border border-gray-200 flex items-center justify-center">
+                    <div className="flex items-center gap-4 min-w-0">
+                      <div className="w-10 h-10 bg-white rounded border border-gray-200 flex items-center justify-center flex-shrink-0">
                         {/* 3. Conditionally render icon based on file type */}
                         {doc.type === 'image' ? (
                           <ImageIcon className="w-5 h-5 text-gray-400" />
@@ -89,19 +92,19 @@ export default function DashboardPage() {
                           <FileText className="w-5 h-5 text-gray-400" />
                         )}
                       </div>
-                      <div>
-                        <p className="font-semibold text-gray-900 text-sm">{doc.name}</p>
+                      <div className="min-w-0">
+                        <p className="font-semibold text-gray-900 text-sm truncate">{doc.name}</p>
                         <p className="text-gray-500 text-xs mt-0.5">
                           {doc.date} • {doc.pages} {doc.pages === 1 ? 'page' : 'pages'}
                         </p>
                       </div>
                     </div>
-                    
+
                     {/* 4. Conditionally style status badge */}
-                    <span 
-                      className={`px-3 py-1 text-xs font-bold rounded-full ${
-                        doc.status === 'PRINTED' 
-                          ? 'bg-green-100 text-green-700' 
+                    <span
+                      className={`self-start sm:self-auto px-3 py-1 text-xs font-bold rounded-full whitespace-nowrap flex-shrink-0 ${
+                        doc.status === 'PRINTED'
+                          ? 'bg-green-100 text-green-700'
                           : 'bg-yellow-100 text-yellow-700'
                       }`}
                     >
@@ -117,25 +120,20 @@ export default function DashboardPage() {
           <div className="lg:col-span-1">
             <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 h-full">
               <h2 className="text-lg font-bold text-gray-900 mb-6">Wallet Overview</h2>
-              
+
               <div className="bg-gray-900 rounded-lg p-6 mb-6 text-white">
-                <p className="text-xs font-medium text-gray-400 tracking-wider mb-2">AVAILABLE PRINTING CREDIT</p>
+                <p className="text-xs font-medium text-gray-400 tracking-wider mb-2">
+                  AVAILABLE PRINTING CREDIT
+                </p>
                 <p className="text-3xl font-bold">N1,250.00</p>
               </div>
 
               <div className="space-y-3">
-                <Button 
+                <Button
+                  onClick={() => navigate('/wallet')}
                   className="w-full bg-teal-600 hover:bg-teal-700 text-white font-semibold py-3 rounded-lg transition-colors border-none"
                 >
                   Top Up Wallet
-                </Button>
-                
-                {/* Fixed border issue using !important modifier */}
-                <Button 
-                  variant="ghost"
-                  className="w-full !bg-white !border !border-gray-300 hover:!bg-gray-50 !text-gray-700 font-semibold py-3 rounded-lg transition-colors"
-                >
-                  View Transaction History
                 </Button>
               </div>
             </div>
@@ -146,7 +144,7 @@ export default function DashboardPage() {
 
       {/* Get Help Button */}
       <div className="fixed bottom-8 right-8">
-        <Button 
+        <Button
           className="bg-teal-600 hover:bg-teal-700 text-white font-semibold px-6 py-3 rounded-full shadow-lg transition-colors flex items-center gap-2 border-none"
         >
           Get Help

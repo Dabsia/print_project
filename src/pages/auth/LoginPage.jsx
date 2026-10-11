@@ -1,10 +1,12 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import AuthLayout from '../../components/auth/AuthLayout'
 import TextInput from '../../components/auth/TextInput'
 import PasswordInput from '../../components/auth/PasswordInput'
 import Button from '../../components/Button'
 
 export default function LoginPage() {
+  const navigate = useNavigate()
+  const Authenticate = () => {navigate('/dashboard')}
   return (
     <AuthLayout>
       <div className="text-center">
@@ -48,7 +50,7 @@ export default function LoginPage() {
         </div>
 
         <div className="pt-1">
-          <Button type="submit">Log In</Button>
+          <Button onClick = {Authenticate} type="submit">Log In</Button>
         </div>
       </form>
 

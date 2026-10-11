@@ -1,5 +1,5 @@
 import { ArrowLeft, Copy, Download, Printer } from 'lucide-react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import Header from '../components/Header/header'
 
@@ -25,6 +25,7 @@ const DEFAULT_JOB = {
 
 export default function PrintJobDetailsPage() {
   const location = useLocation()
+  const navigate = useNavigate()
   
   const jobData = { ...DEFAULT_JOB, ...(location.state?.job || {}) }
 
@@ -43,6 +44,18 @@ export default function PrintJobDetailsPage() {
     navigator.clipboard.writeText(otpString)
     setCopied(true)
     setTimeout(() => setCopied(false), 2000)
+  }
+
+  const handleDownload = () => {
+    console.log('Downloading document:', jobData.name)
+    // TODO: Implement actual download functionality
+    alert('Download started for: ' + jobData.name)
+  }
+
+  const handleReprint = () => {
+    console.log('Reprinting document:', jobData.name)
+    // Navigate to configure print page with job data
+    navigate('/configure-print', { state: { job: jobData } })
   }
 
   const getStatusColor = (status) => {
@@ -207,11 +220,11 @@ export default function PrintJobDetailsPage() {
         </div>
 
         <div className="flex justify-end gap-4 mt-8">
-          <button className="border border-teal-500 text-teal-600 font-semibold text-sm px-6 py-3 rounded-lg hover:bg-teal-50 transition-colors flex items-center justify-center gap-2 bg-white">
+          <button onClick={handleDownload} className="border border-teal-500 text-teal-600 font-semibold text-sm px-6 py-3 rounded-lg hover:bg-teal-50 transition-colors flex items-center justify-center gap-2 bg-white">
             <Download className="w-4 h-4" />
             Download Material
           </button>
-          <button className="bg-teal-600 hover:bg-teal-700 text-white font-semibold text-sm px-6 py-3 rounded-lg transition-colors flex items-center justify-center gap-2">
+          <button onClick={handleReprint} className="bg-teal-600 hover:bg-teal-700 text-white font-semibold text-sm px-6 py-3 rounded-lg transition-colors flex items-center justify-center gap-2">
             <Printer className="w-4 h-4" />
             Reprint Document
           </button>

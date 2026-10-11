@@ -1,9 +1,11 @@
 import { ArrowLeft, ChevronRight } from 'lucide-react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import Header from '../components/Header/header'
 
 export default function ProfilePage() {
+  const navigate = useNavigate()
+
   // Form state
   const [firstName, setFirstName] = useState('Dabo')
   const [surname, setSurname] = useState('Johnson')
@@ -20,7 +22,8 @@ export default function ProfilePage() {
 
   const handleSignOut = () => {
     console.log('Signing out...')
-    // TODO: Clear auth, navigate to login
+    // TODO: Clear auth
+    navigate('/login')
   }
 
   return (

@@ -33,6 +33,7 @@ const RECENT_DOCUMENTS = [
 
 export default function DashboardPage() {
   const navigate = useNavigate()
+  const gotoHelp = () => {navigate('/help')}
   return (
     <div className="min-h-screen bg-gray-50 font-sans text-gray-900">
       <Header />
@@ -81,7 +82,8 @@ export default function DashboardPage() {
                 {RECENT_DOCUMENTS.map((doc) => (
                   <div
                     key={doc.id}
-                    className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 p-4 bg-gray-50 rounded-lg border border-gray-100"
+                    onClick={() => navigate('/print-job-details', { state: { job: doc } })}
+                    className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 p-4 bg-gray-50 rounded-lg border border-gray-100 cursor-pointer hover:border-teal-300 hover:bg-gray-100 transition-colors"
                   >
                     <div className="flex items-center gap-4 min-w-0">
                       <div className="w-10 h-10 bg-white rounded border border-gray-200 flex items-center justify-center flex-shrink-0">
@@ -144,7 +146,7 @@ export default function DashboardPage() {
 
       {/* Get Help Button */}
       <div className="fixed bottom-8 right-8">
-        <Button
+        <Button onClick = {gotoHelp}
           className="bg-teal-600 hover:bg-teal-700 text-white font-semibold px-6 py-3 rounded-full shadow-lg transition-colors flex items-center gap-2 border-none"
         >
           Get Help

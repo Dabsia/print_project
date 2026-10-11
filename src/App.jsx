@@ -12,12 +12,20 @@ import PrintJobDetailsPage from './pages/PrintJobDetailsPage'
 import WalletPage from './pages/WalletPage'
 import ProfilePage from './pages/ProfilePage'
 import ChangePasswordPage from './pages/ChangePasswordPage'
+import PrivacyPolicyPage from './pages/PrivacyPolicyPage'
+import TermsOfServicePage from './pages/TermsOfServicePage'
+import HelpPage from './pages/HelpPage'
+import AboutUsPage from './pages/AboutUs'
+import Home from './pages/Home'
+import ScrollToTop from './components/ScrollToTop/ScrollToTop'
 
 export default function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Routes>
-        <Route path="/" element={<Navigate to="/dashboard" replace />} />
+        <Route path="/" element={<Home />} />
+        {/* <Route path="/" element={<Navigate to="/dashboard" replace />} /> */}
         <Route path="/dashboard" element={<DashboardPage />} />
         <Route path="/upload-doc" element={<UploadDocumentPage />} />
         <Route path="/configure-print" element={<ConfigurePrintJobPage />} />
@@ -31,6 +39,11 @@ export default function App() {
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/forgot-password" element={<ForgotPasswordPage />} />
         <Route path="/reset-password" element={<ResetPasswordPage />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+        <Route path="/terms-of-service" element={<TermsOfServicePage />} />
+        <Route path="/help" element={<HelpPage />} />
+        <Route path="/about" element={<AboutUsPage />} />
+
       </Routes>
     </BrowserRouter>
   )

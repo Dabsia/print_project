@@ -3,6 +3,7 @@ export default function Button({
   variant = 'primary',
   className = '',
   type = 'button',
+  onClick = () => console.log('Clicked'),
   ...props
 }) {
   if (variant === 'ghost') {
@@ -18,7 +19,7 @@ export default function Button({
   }
 
   return (
-    <button type={type} className={`btn-primary ${className}`} {...props}>
+    <button onClick = {onClick} type={type} className={`btn-primary ${className}`} {...props}>
       {children}
     </button>
   )

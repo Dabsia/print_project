@@ -1,6 +1,6 @@
 import { ArrowLeft, X, Plus, ArrowRight, Camera, FileText } from 'lucide-react'
 import { Link, useNavigate } from 'react-router-dom'
-import Header from '../components/Header/header'
+import Header from '../components/Header/Header'
 import { useState, useEffect, useRef } from 'react'
 import { PDFDocument } from 'pdf-lib'
 import { get, set, del } from 'idb-keyval'

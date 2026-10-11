@@ -1,6 +1,6 @@
 import { ArrowRight, FileText, Image as ImageIcon } from 'lucide-react'
 import Button from '../components/Button'
-import Header from '../components/Header/header'
+import Header from '../components/Header/Header'
 import { Link, useNavigate } from 'react-router-dom'
 
 // 1. Define the documents data array outside the component

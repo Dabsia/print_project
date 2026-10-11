@@ -1,7 +1,7 @@
 import { ArrowLeft, ArrowUpRight, ArrowDownLeft, RefreshCw } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
-import Header from '../components/Header/header'
+import Header from '../components/Header/Header'
 
 // Updated data to match the screenshot
 const TRANSACTIONS = [

@@ -1,7 +1,7 @@
 import { ArrowLeft, ChevronRight } from 'lucide-react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
-import Header from '../components/Header/header'
+import Header from '../components/Header/Header'
 
 export default function ProfilePage() {
   const navigate = useNavigate()

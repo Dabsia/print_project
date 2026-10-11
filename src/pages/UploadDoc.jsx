@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useState, useRef } from 'react'
 import { set } from 'idb-keyval'
 import { PDFDocument } from 'pdf-lib'
-import Header from '../components/Header/header'
+import Header from '../components/Header/Header'
 
 export default function UploadDocumentPage() {
   const navigate = useNavigate()

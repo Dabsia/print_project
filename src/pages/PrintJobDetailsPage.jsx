@@ -1,7 +1,7 @@
 import { ArrowLeft, Copy, Download, Printer } from 'lucide-react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
-import Header from '../components/Header/header'
+import Header from '../components/Header/Header'
 
 const DEFAULT_JOB = {
   id: 1,

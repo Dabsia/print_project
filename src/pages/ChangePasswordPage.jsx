@@ -1,7 +1,7 @@
 import { Eye, EyeOff, Lock, Info, ChevronRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
-import Header from '../components/Header/header'
+import Header from '../components/Header/Header'
 
 export default function ChangePasswordPage() {
   const [showCurrentPassword, setShowCurrentPassword] = useState(false)

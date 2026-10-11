@@ -1,6 +1,6 @@
 import { ArrowLeft } from 'lucide-react'
 import { Link, useNavigate } from 'react-router-dom'
-import Header from '../components/Header/header'
+import Header from '../components/Header/Header'
 
 // 1. Define the printer terminals data
 const PRINTER_TERMINALS = [

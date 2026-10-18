@@ -4,7 +4,7 @@ import Header from '../components/Header/Header'
 import { useState, useEffect, useRef } from 'react'
 import { PDFDocument } from 'pdf-lib'
 import { get, set, del } from 'idb-keyval'
-import { Html5QrcodeScanner } from 'html5-qrcode'
+import { Html5Qrcode } from 'html5-qrcode'
 
 export default function ConfigurePrintJobPage() {
   const navigate = useNavigate()
@@ -143,23 +143,35 @@ export default function ConfigurePrintJobPage() {
   // Scanner lifecycle
   useEffect(() => {
     if (showScannerModal) {
-      scannerRef.current = new Html5QrcodeScanner(
-        "qr-reader",
-        { fps: 10, qrbox: { width: 250, height: 250 }, aspectRatio: 1.0 },
-        false
-      )
-      scannerRef.current.render(
+      const html5QrCode = new Html5Qrcode("qr-reader")
+      scannerRef.current = html5QrCode
+
+      const config = { fps: 10, qrbox: { width: 250, height: 250 } }
+      
+      html5QrCode.start(
+        { facingMode: "environment" },
+        config,
         (decodedText) => {
           console.log(`QR Code detected: ${decodedText}`)
           alert(`QR Code Scanned! Value: ${decodedText}`)
-          if (scannerRef.current) scannerRef.current.clear().catch(console.error)
-          setShowScannerModal(false)
+          html5QrCode.stop().then(() => {
+            setShowScannerModal(false)
+          }).catch(console.error)
           // TODO: send print job to backend with decodedText and documents
         },
-        () => {}
-      )
+        (errorMessage) => {
+          console.log(`QR scan error: ${errorMessage}`)
+        }
+      ).catch((err) => {
+        console.error("Error starting scanner", err)
+        alert("Unable to access camera. Please ensure camera permissions are granted.")
+        setShowScannerModal(false)
+      })
+
       return () => {
-        if (scannerRef.current) scannerRef.current.clear().catch(console.error)
+        if (html5QrCode.isScanning) {
+          html5QrCode.stop().catch(console.error)
+        }
       }
     }
   }, [showScannerModal])
